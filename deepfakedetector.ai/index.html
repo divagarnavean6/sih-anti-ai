@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <link rel="icon" href="images/deepfake detector logo.png">
+       <link rel="canonical" href="https://deepfakedetector.ai" />
+    <title>Deepfake Detector | Detect Deepfakes Before They Spread</title>
+     <meta name="description" content="Deepfake Detector is an AI-based tool designed to detect manipulated videos and audios created using AI. Detect Deepfakes Before They Spread"/>
+	        <meta name="keywords" content="Deepfake Detector, deep fake ai, detect deepfake, deepfake detection, ai deepfake, deep fake ai, deepfake video detection">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"  crossorigin="anonymous">  
+
+
+	 <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Project",
+  "name": "Deepfake Detector",
+  "url": "https://deepfakedetector.ai/",
+  "logo": "https://deepfakedetector.ai/images/deepfake%20detector%20logo.png"
+}
+</script>
+    <style>
+    /* Global Styles */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #00BFFF;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+body {
+  background-color: #fff;
+  overflow-x: hidden;
+}
+html {
+      scroll-behavior: smooth;
+      }    
+
+/* Navbar */
+.navbar {
+  background-color: var(--primary-color);
+}
+
+.navbar-brand {
+  color: #fff;
+  font-size: 18px;
+}
+
+/* Page Heading */
+h1 {
+  text-align: center;
+  margin: 50px 0;
+}
+
+/* Form */
+.container {
+  max-width: 100%;
+  margin: 50px ;
+  padding: 0 20px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.custom-file-control {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  padding: 6px 12px;
+  color: #fff;
+  transition: all .3s;
+}
+
+.custom-file-control:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.custom-file-input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+#file-name {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.form-control:focus {
+  border-color: var(--secondary-color);
+  box-shadow: none;
+}
+
+/* Upload Message */
+#upload-message {
+  color: red;
+  margin-bottom: 10px;
+  font-size: 17px;
+}
+
+/* Result */
+#result {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+ul.list-unstyled {
+  margin-top: 10px;
+}
+
+.list-unstyled li {
+  margin-bottom: 5px;
+}
+
+.list-unstyled li .badge {
+  background-color: #9c27b0;
+  font-size: 14px;
+}
+
+/* Loader */
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #9c27b0;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Buttons */
+.btn {
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border-radius: 4px;
+  transition: all .3s;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-info:hover {
+  color: #fff;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+     @media only screen and (max-width: 768px) {
+/*above the fold*/ 
+.container {
+  max-width: 100%;
+  margin: 50px auto;
+  padding: 0 20px;
+}	     
+	     
+/*section*/
+       
+ .section-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-image {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+/* Navbar */
+.navbar-brand {
+font-size: 18px;
+}
+
+       
+/* Page Heading */
+h1 {
+font-size: 28px;
+}
+
+
+.custom-file-control {
+font-size: 16px;
+}
+
+#file-name {
+font-size: 18px;
+}
+
+/* Result */
+#result {
+font-size: 20px;
+}
+       
+ul.list-unstyled li .badge {
+font-size: 12px;
+}
+
+/* Loader */
+.loader {
+width: 80px;
+height: 80px;
+border-width: 10px;
+}
+
+/* Buttons */
+.btn {
+font-size: 16px;
+}
+}
+
+ .bg-info { 
+       background: linear-gradient(to right, white, purple,aqua);
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+      }
+      
+ /* navbar */
+      
+  .navbar {
+  background-color: #9c27b0!important;
+  font-family: Arial, sans-serif;
+  height: 60px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  font-weight: bolder;
+}
+
+.navbar-brand img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item {
+  padding: 0 10px;
+}
+
+.nav-link {
+  color: #fff;
+  font-size: 18px;
+}
+
+.nav-link:hover {
+  color: #f7f7f7;
+}
+
+@media (max-width: 767px) {
+  .navbar-collapse {
+    justify-content: flex-end;
+  }
+  
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .nav-item {
+    padding: 10px 0;
+  }
+}
+
+.navbar-nav {
+   
+    font-weight: bolder;
+  }
+      
+p {
+    text-align:center;
+    font-size: 20px;
+    font-family: revert; 
+      }
+ .text-center{
+          font-weight: bold;
+      }
+      
+  .section-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.section-image {
+  flex: 1;
+  margin-right: auto;
+}
+
+.section-image img {
+  width: 100%;
+  height: auto;
+}
+
+.section-text {
+  flex: 1;
+  padding: 5%;	
+}
+
+.section-text h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section-text p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+.scroll-button {
+  display: block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.scroll-button:hover {
+  background: linear-gradient(to right, white, purple,aqua);
+  cursor: pointer;
+   cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  }
+	    
+
+/*steps*/
+	    
+.steps {
+  background-color: #f8f9fa;
+  padding: 80px 0;
+}
+
+.step {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.step h3 {
+  font-size: 24px;
+  margin-top: 30px;
+}
+
+.step p {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.5;
+  margin-top: 20px;
+  text-align:center;
+}
+
+.step-icon {
+  background-color: #007bff;
+  color: #fff;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  transition: all 0.3s ease;
+}
+
+.step-icon:hover {
+  transform: rotate(360deg);
+}
+
+.fa-upload,
+.fa-search,
+.fa-check {
+  font-size: 40px;
+}
+	    .steps .container{
+	    margin:auto;
+	    }	    
+	    
+	    
+	    .demo-button {
+  background-color: #9C27B0; /* Green background */
+  border: none; /* Remove border */
+  padding: 5%; /* Padding */
+  text-align: center; /* Center text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Display as inline block */
+  font-size: 14px; /* Font size */
+  margin: 4px 2px; /* Margin */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.demo-button a {
+  color: white; /* White text */
+  text-decoration: none; /* Remove underline */
+}
+button {
+    background: no-repeat;
+    border: none;
+}
+
+ .count-value {
+      font-size: 48px;
+      transition: transform 0.3s ease-in-out;
+       color: blueviolet;
+    }
+
+    .count-bounce {
+      transform: scale(1.2);
+    }	    
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <a class="navbar-brand d-flex align-items-center" href="https://deepfakedetector.ai/">
+      <img src="images/deepfake detector logo.png" width="50" height="50" class="mr-3">
+      <div >DeepFake Detector</div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link text-black" href="https://deepfakedetector.ai/">Home</a>
+        </li>
+	    
+	 <li class="nav-item">
+          <a class="nav-link text-black" href="/register">Login</a>
+        </li>       
+        <li class="nav-item">
+           <button id="logoutBtn" onclick="logout()">Logout</button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-black" href="/pricing">pricing</a>
+        </li>
+	 <li class="nav-item active">
+          <a class="text-primary px-3" href="https://www.instagram.com/aivoicedetector/">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+        </li>       
+      </ul>
+    </div>
+  </nav>
+    <div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-4">
+	     <h2 id="welcome"></h2> <h1 class="text-center mb-4"> <strong> Deepfake detector, </strong> You Deserve the Truth </h1>
+     <!-- <p>Detect Deepfakes Before They Spread</p> -->
+	     <h2 style="text-align: center; color: black;">Don't Fall Victim to Deepfake Scams!</h2>
+	 <p>We Have Detected <span id="voiceCount" class="count-value">0</span> Deepfake Generated Videos</p>
+	   <p>We Protect <span id="userCount" class="count-value">0</span> Users.</p>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <div class="card">
+        <div class="card-body text-center">
+          <div id="upload-message" style="color: red;"></div>
+          <form enctype="multipart/form-data" id="upload-form" class="form-row">
+            <div class="form-group col-12">
+              <label for="audio-file">
+                <img src="images/play.png"/ height="15%" width="15%">
+              </label>
+              <div class="custom-file">
+                <input type="file" id="audio" name="audio" class="custom-file-input">
+                <label class="custom-file-label" for="audio" style="text-align:left;">Select a video or audio file</label>
+              </div>
+              <div id="file-name"></div>
+            </div>
+            <div class="form-group col-12">
+		    <h6 style="color:red;  font-weight: bold; "> <span style="color:#3F51B5;">For better results: </span></br> Use audio without background music and noise.</br> remove background music with this <a href="https://vocalremover.org/">vocal remover </a> or remove noise with <a href="https://podcast.adobe.com/enhance">Adobe</a> </br></h6>
+              <button type="submit" id="detect-btn" class="btn btn-info">Detect Deepfake</button>
+              <div id="result"></div>
+              <div id="message"></div>
+              <div id="erroraccount"></div>
+            </div>
+             
+          </form>
+          <div class="loader" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- demo -->
+  <div class="container mt-5" style="padding:0 px;">
+        <h2>Demo</h2>
+        <div class="row">
+            <!-- Recording 1 -->
+            <div class="col-md-4 mb-4" style="text-align:center;">
+                <audio controls>
+                    <source src="recordings/Biden Recording.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <img src="recordings/Fake Biden Recording.png" alt="Biden Recording" width="80%">
+            </div>
+            <!-- Recording 2 -->
+            <div class="col-md-4 mb-4" style="text-align:center;">
+                <audio controls>
+                    <source src="recordings/Rogan Recording.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <img src="recordings/Fake Rogan Recording.png" alt="Rogan Recording" width="80%">
+            </div>
+            <!-- Recording 3 -->
+            <div class="col-md-4 mb-4" style="text-align:center;">
+                <audio controls>
+                    <source src="recordings/Morgan Recording.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <img src="recordings/Fake Morgan Recording.png" alt="Morgan Recording" width="80%">
+            </div>
+        </div>
+    </div>
+<!-- end demo -->	      
+<section class="section-container">
+  <div class="section-image">
+    <img src="images/deepfake detector.png" alt="deepfake detector" title="deepfake detector">
+  </div>
+  <div class="section-text">
+    <h2>Protect Yourself from Deepfakes</h2>
+    <p>Deepfake videos and audios can be used to spread misinformation and deceive people. With our Deepfake Detector, you can confidently filter out AI-generated videos and audios and ensure authenticity in important situations like media reporting and legal proceedings.</p>
+    <a href="#" class="scroll-button">Detect Deepfake</a>
+  </div>
+</section>
+<section class="section-container">
+  <div class="section-text">
+    <h2><strong>Deepfake Detector</strong> will Lead You to Video and Audio Authenticity</h2>
+    <p>We understand the danger of deepfakes and the importance of authentic videos and audios. With our expert verification services, you can confidently filter out false videos and audios and ensure their authenticity.</p>
+    <a href="#" class="scroll-button">Detect Deepfake</a>
+  </div>
+  <div class="section-image">
+    <img src="images/Video and Audio Authenticity.png" alt="Video and Audio Authenticity" title="Video and Audio Authenticity">
+  </div>
+</section>
+<section class="steps">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="step">
+          <div class="step-icon">
+            <i class="fas fa-upload"></i>
+          </div>
+          <h3>Step 1: Upload your video or audio file</h3>
+          <p>Choose a video or audio file that you want to verify for authenticity. For best results, we recommend choosing a video or audio file that is at least 8 seconds long and does not have any edits or special effects.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step">
+          <div class="step-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>Click "Detect Deepfake"</h3>
+          <p>After uploading your video or audio file, click the "Detect Deepfake" button to start the verification process.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step">
+          <div class="step-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <h3>View Results</h3>
+          <p>You will receive a result that shows the probability of the video or audio being either an AI-generated deepfake or a natural video or audio. This information will help you determine the authenticity of the video or audio you have uploaded.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+	  
+	  	  
+<section class="section-container">
+  <div class="section-text">
+    <h2>Don't Trust Any Voice You Hear</h2>
+    <p> In today's world, where deepfakes are becoming more sophisticated and widespread, it's increasingly important to be able to trust the authenticity of the voices we hear. </p>
+    <a href="#" class="scroll-button">Detect Deepfake</a>
+  </div>
+  <div class="section-image">
+    <img src="images/deepfake ai.jpg" alt="deepfake ai" title="deepfake ai">
+  </div>
+</section>
+  <div>
+    <h2 style="text-align:center;margin-top: 5%; color: mediumvioletred;">Your Ears Deserve the Truth</h2>
+    </div>
+<section class="section-container">
+  <div class="section-image">
+    <img src="images/detect ai.png" alt="detect ai" title="detect ai">
+  </div>
+  <div class="section-text">
+    <h2>Ensure Audio and Video Authenticity and Avoid Misinformation</h2>
+    <p>Don't let the spread of deepfake videos and audios affect you or your organization. Ensure audio and video authenticity and avoid the potential pitfalls of misinformation with the services of Deepfake Detector. </p>
+    <a href="#" class="scroll-button">Detect Deepfake</a>
+  </div>
+</section>
+<section class="section-container">
+  <div class="section-text">
+    <h2> Gain Peace of Mind with Audio and Video Authenticity </h2>
+    <p>When you use our detector, you gain more than just audio and video authenticity - you gain peace of mind. 
+      With our state-of-the-art verification services, you can confidently filter out AI-generated voices and deepfake videos, and ensure audio and video authenticity.</p>
+    <a href="#" class="scroll-button">Detect Deepfake</a>
+  </div>
+  <div class="section-image">
+    <img src="images/ai deepfake detector.png" alt="ai deepfake detector" title="dai deepfake detector">
+  </div>
+</section>
+	  
+ <div class="container">
+  <h2 class="text-center">Frequently Asked Questions</h2>
+  <div class="accordion" id="faqAccordion">
+    <div class="card">
+     
+             <a href="https://deepfakedetector.ai/blogs/danger-of-deepfakes">  What are the dangers of Deepfakes ? </a>
+	    <br><br>
+	    
+		    
+	
+      </div>
+    </div>
+    
+	  
+
+	    
+<div style="text-align: center;" >
+      
+      <br>
+      <a href="/">Home</a>
+      <p class="text-center">&copy; 2023 DeepFakeDetector.com. All rights reserved.</p>
+      
+    </div>
+    	     <script>
+  // Function to handle the duration check and error message display
+const username = sessionStorage.getItem('username');		  
+if (username) {	  
+  function checkAudioDuration() {
+    const audioFile = document.getElementById('audio').files[0];
+
+    if (audioFile) {
+      const audio = new Audio();
+      audio.src = URL.createObjectURL(audioFile);
+
+      audio.onloadedmetadata = function() {
+        URL.revokeObjectURL(audio.src);
+
+        const duration = audio.duration;
+        const minDuration = 2;
+        const maxDuration = 8;
+
+        if (duration < minDuration || duration > maxDuration) {
+          // Display error message
+         document.getElementById('message').innerHTML = 'Please upload an audio less than 7 seconds. </br> Cut your audio with <a href="https://clideo.com/cut-audio" target="_blank">Clideo</a>';
+
+          document.getElementById('audio').value = ''; // Clear the file input field
+        } else {
+          // Clear any previous error message
+          document.getElementById('message').textContent = '';
+        }
+      };
+    }
+  }
+
+  // Add an event listener for the file input to trigger the duration check
+  document.getElementById('audio').addEventListener('change', checkAudioDuration);
+
+}
+</script>
+	 
+    <script>
+       var fileInput = document.getElementById('audio');
+      var fileName = document.getElementById('file-name');
+
+      fileInput.addEventListener('change', function() {
+        fileName.innerHTML = fileInput.files[0].name;
+      });
+      document.getElementById("upload-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+
+          if (!fileInput.files || fileInput.files.length === 0) {
+    document.getElementById("upload-message").innerHTML = "Please upload an audio";
+    return;
+  }
+   document.getElementById("upload-message").innerHTML = "";
+        // Show loader before sending the request
+document.querySelector('.loader').style.display = 'block';
+document.getElementById("result").innerHTML = '';
+document.getElementById("message").innerHTML = '';
+//document.getElementById("error").innerHTML = '';
+const userid = sessionStorage.getItem('userid');
+formData.append("id", userid);
+
+fetch("https://voicy00.pythonanywhere.com/PredictDeepfake", {
+  method: "POST",
+  body: formData
+})
+.then(response => response.json())
+.then(data => {
+  var message = data.message;
+  console.log(message);
+  var erroraccount = data.error;
+  console.log(erroraccount);
+    // Hide loader after receiving the response
+  document.querySelector('.loader').style.display = 'none';
+  if (typeof message != "undefined")
+  {
+  document.getElementById("message").innerHTML = message;
+  var paymentButton = document.createElement("button");
+    paymentButton.innerHTML = "Subscribe now for $17.88/month";
+    paymentButton.onclick = function() {
+      location.href = "/payment-paypal";
+    };
+    paymentButton.style.backgroundColor = "purple";
+    paymentButton.style.border = "none";
+    paymentButton.style.color = "white";
+    paymentButton.style.padding = "12px 24px";
+    paymentButton.style.textAlign = "center";
+    paymentButton.style.textDecoration = "none";
+    paymentButton.style.display = "inline-block";
+    paymentButton.style.fontSize = "16px";
+    document.getElementById("message").appendChild(paymentButton);
+  } 
+
+  if (typeof erroraccount != "undefined") { 
+  document.getElementById("erroraccount").innerHTML = erroraccount;
+  var paymentButton = document.createElement("button");
+    paymentButton.innerHTML = "Login or register";
+    paymentButton.onclick = function() {
+      location.href = "/register";
+    };
+    paymentButton.style.backgroundColor = "purple";
+    paymentButton.style.border = "none";
+    paymentButton.style.color = "white";
+    paymentButton.style.padding = "12px 24px";
+    paymentButton.style.textAlign = "center";
+    paymentButton.style.textDecoration = "none";
+    paymentButton.style.display = "inline-block";
+    paymentButton.style.fontSize = "16px";
+    document.getElementById("erroraccount").appendChild(paymentButton);
+  }
+  var class_label = data.class_label;
+  var class_probabilities = data.class_probabilities;
+  var resultHTML = '<div class="animate__animated animate__fadeIn"><p>Probabilities:</p><ul class="list-unstyled">';
+  for (var i = 0; i < class_probabilities.length; i++) {
+    var probability = class_probabilities[i][1];
+    var probability_percent = (probability * 100).toFixed(2) + '%';
+    resultHTML += '<li>' + class_probabilities[i][0] + ': <span class="badge badge-info">' + probability_percent + '</span></li>';
+  }
+  resultHTML += '</ul></div>';
+  
+
+  // Hide loader after receiving the response
+  document.querySelector('.loader').style.display = 'none';
+  document.getElementById("result").innerHTML = resultHTML;
+
+})
+.catch(error => console.error(error));
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    
+    <script type="text/javascript">
+      
+      /*const username = sessionStorage.getItem('username');*/
+      const userid = sessionStorage.getItem('userid');
+if (username) {
+  const welcomeMessage = document.createElement('h1');
+  welcomeMessage.textContent = `Hi ${username}!`;
+  document.getElementById('welcome').appendChild(welcomeMessage);
+}
+
+if (!username) {
+  logoutBtn.style.display = 'none';
+}
+
+/*const detectBtn = document.getElementById('detect-btn');
+detectBtn.addEventListener('click', function() {
+    const username = sessionStorage.getItem('username');
+    if (!username) {
+        window.location.href = 'register.html';
+    }
+    
+});*/
+
+function logout() {
+        sessionStorage.clear();
+        window.location.href = 'register.html';
+      }
+
+
+    </script>
+
+
+	 <script> 
+const targetCount = 1550;
+    let voiceCount = 0;
+    const countElement = document.getElementById('voiceCount');
+
+    function incrementCount() {
+      if (voiceCount < targetCount) {
+        voiceCount++;
+        countElement.textContent = voiceCount;
+        countElement.classList.add('count-bounce');
+        countElement.addEventListener('transitionend', () => {
+          countElement.classList.remove('count-bounce');
+        });
+      }
+    }
+
+    setInterval(incrementCount, 1);
+		    
+	/** for users */
+	const targetCount2 = 2800;
+    let userCount = 0;
+    const countElement2 = document.getElementById('userCount');
+
+    function incrementCount2() {
+      if (userCount < targetCount2) {
+        userCount++;
+        countElement2.textContent = userCount;
+        countElement2.classList.add('count-bounce');
+        countElement2.addEventListener('transitionend', () => {
+          countElement2.classList.remove('count-bounce');
+        });
+      }
+    }
+
+    setInterval(incrementCount2, 1);	    
+	    
+	    </script>
+<!-- Default Statcounter code for deepfa2 https://deepfakedetector.ai/ -->
+<script type="text/javascript">
+var sc_project=12925776; 
+var sc_invisible=1; 
+var sc_security="01c48b0e"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="https://c.statcounter.com/12925776/0/01c48b0e/1/"
+alt="Web Analytics"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
+       </body>
+	  
+	  <!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/8307595.js"></script>
+<!-- End of HubSpot Embed Code -->
+       </html>
