@@ -1,0 +1,11 @@
+export const AVATAR = 'avatar';
+export const FIRST_NAME = 'firstName';
+export const LAST_NAME = 'lastName';
+export const IS_BOT = 'bot';
+export const USER_ID = 'userId';
+export const IS_ONLINE = 'online';
+export const EMAIL = 'email';
+export const AGENT_STATE = 'agentState';
+export const AGENT_TYPE = 'agentType';
+export const MEETINGS_LINKS_TEXT = 'meetingsLinkText';
+export const MEETINGS_LINKS_URL = 'meetingsLinkUrl';
