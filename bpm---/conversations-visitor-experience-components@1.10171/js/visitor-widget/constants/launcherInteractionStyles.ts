@@ -1,0 +1,5 @@
+import { css } from 'styled-components';
+const launcherInteractionStyles = css(["box-shadow:0 1px 4px rgba(0,0,0,0.1),0 2px 12px rgba(0,0,0,0.2);&:hover{cursor:pointer;}&:focus-visible{outline-offset:2px;}@media (prefers-reduced-motion:no-preference){transition:box-shadow 100ms ease-in-out;transition:transform 100ms ease-in-out;&:hover{box-shadow:0 2px 6px rgba(0,0,0,0.1),0 4px 16px rgba(0,0,0,0.2);transform:scale(1.1);}&:focus-visible{box-shadow:0 2px 6px rgba(0,0,0,0.1),0 4px 16px rgba(0,0,0,0.2);transform:scale(1.1);}&:active{box-shadow:0 1px 4px rgba(0,0,0,0.1),0 2px 8px rgba(0,0,0,0.1);transform:scale(0.9);}}@media (prefers-reduced-motion){&::after{content:'';position:absolute;top:0;left:0;border-radius:inherit;width:100%;height:100%;display:block;background-color:", ";opacity:0;}&:hover{&::after{opacity:0.08;}}&:focus-visible{&::after{opacity:0.12;}}&:active{&::after{opacity:0.12;}}}"], ({
+  isDark
+}) => isDark ? '#000' : '#fff');
+export default launcherInteractionStyles;
