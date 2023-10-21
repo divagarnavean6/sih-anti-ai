@@ -1,1 +1,0 @@
-export const DEFAULT_CLIENT_KEY = 'DEFAULT_CLIENT_KEY';
